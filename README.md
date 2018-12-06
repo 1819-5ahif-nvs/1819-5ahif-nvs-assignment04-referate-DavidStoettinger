@@ -4,7 +4,7 @@
 
 Es wird ein MicroService simmuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können
 
-### Gleichheiten
+### Gleichheiten der Files
 #### pom.xml
 
 MicroProfile
@@ -74,6 +74,16 @@ Standard Entity mit einigen Properties.
 Wieso eine ConcurrentMap:
 Nachdem MicroProfile kein JPA unterstützt werden die Daten in einer Map gespeichert.
 Der Unterschied zwischen einer normalen und einer ConcurrentMap ist dass ConcurrentMaps die selben Werte bei jeden Zugriff hat.
+
+Für die Id bei der Map verwenden wir eine variable, welche bei jeden verwenden um 1 erhöht wird
+```
+private Long latestID = 0L;
+
+private Long getLatestID(){
+  latestID++;
+  return latestID;
+}
+```
 
 ### Order
 
