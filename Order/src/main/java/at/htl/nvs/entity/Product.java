@@ -44,10 +44,10 @@ public class Product {
         this.price = price;
     }
 
-    private Long id;
-    private String name;
-    private String weight;
-    private Double price;
+    Long id;
+    String name;
+    String weight;
+    Double price;
 
 
 }

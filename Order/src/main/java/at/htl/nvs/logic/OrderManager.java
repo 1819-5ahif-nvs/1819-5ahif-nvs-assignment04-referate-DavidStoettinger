@@ -3,12 +3,10 @@ package at.htl.nvs.logic;
 import at.htl.nvs.entity.Customer;
 import at.htl.nvs.entity.Order;
 import at.htl.nvs.entity.Product;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -39,11 +37,9 @@ public class OrderManager {
             URL url = new URL("http://localhost:8090/rs/Product/"+ID.toString());
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
-            Gson gson = new Gson();
-            JsonParser jp = new JsonParser();
-            JsonElement el = jp.parse(new InputStreamReader(con.getInputStream()));
 
-            return gson.fromJson(el, Product.class);
+            Jsonb jsonb = JsonbBuilder.newBuilder().build();
+            return jsonb.fromJson(new InputStreamReader(con.getInputStream()),Product.class);
 
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -56,12 +52,9 @@ public class OrderManager {
             URL url = new URL("http://localhost:8085/rs/Customer/"+ID.toString());
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
-            Gson gson = new Gson();
-            JsonParser jp = new JsonParser();
-            JsonElement el = jp.parse(new InputStreamReader(con.getInputStream()));
 
-            return gson.fromJson(el, Customer.class);
-
+            Jsonb jsonb = JsonbBuilder.newBuilder().build();
+            return jsonb.fromJson(new InputStreamReader(con.getInputStream()),Customer.class);
         } catch (Exception e){
             System.out.println(e.getMessage());
             return new Customer();
