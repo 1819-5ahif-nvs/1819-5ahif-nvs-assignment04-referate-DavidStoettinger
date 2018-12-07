@@ -150,3 +150,4 @@ zum starten ausführen.
 
 - Am Schluss der Präsentation                                                  
 - [Adam Bien - Jsonb](http://www.adam-bien.com/roller/abien/entry/java_ee_8_serializing_pojos)
+- [How to maintaiin dataconsistency](https://microservices.io/patterns/data/saga.html)
