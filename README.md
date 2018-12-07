@@ -145,3 +145,8 @@ zum starten ausführen.
 ## Ausarbeitung des Referats
 
 [Presentation](Presentation/Microservices.pdf)
+
+## Quellen
+
+- Am Schluss der Präsentation                                                  
+- [Adam Bien - Jsonb](http://www.adam-bien.com/roller/abien/entry/java_ee_8_serializing_pojos)
