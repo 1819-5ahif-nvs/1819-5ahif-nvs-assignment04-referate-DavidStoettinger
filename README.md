@@ -2,7 +2,7 @@
 
 ## Beispiel
 
-Es wird ein MicroService simmuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können
+Es wird ein MicroService simuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können
 
 ### Gleichheiten der Files
 #### pom.xml
