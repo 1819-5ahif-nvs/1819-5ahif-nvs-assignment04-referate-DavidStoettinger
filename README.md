@@ -2,7 +2,7 @@
 
 ## Beispiel
 
-Es wird ein MicroService simmuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können
+Es wird ein MicroService simuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können
 
 ### Gleichheiten der Files
 #### pom.xml
@@ -113,32 +113,28 @@ Setzt requests zum erhalten des Costumers und Products und gibt eine Order zurü
 URL url = new URL("http://localhost:8085/rs/Customer/"+ID.toString());
 HttpURLConnection con = (HttpURLConnection)url.openConnection();
 con.setRequestMethod("GET");
-Gson gson = new Gson();
-JsonParser jp = new JsonParser();
-JsonElement el = jp.parse(new InputStreamReader(con.getInputStream()));
 
-return gson.fromJson(el, Customer.class);
-
+Jsonb jsonb = JsonbBuilder.newBuilder().build();
+return jsonb.fromJson(new InputStreamReader(con.getInputStream()),Customer.class);
 ```
 
-Grundsätzlich würde MircroProfile Jsonb dafür zur verfügung stellen, jedoch gibt es damit Probleme beim starten
+Nachdem MicroProfile Jsonb unterstützt, brauchen wir nur noch eine dependency damit es funktioniert.
 
 #### pom.xml
 
-Um dieses Problem zu beheben verwende ich Gson
 ```
 <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.5</version>
-        </dependency>
+    <groupId>org.eclipse</groupId>
+    <artifactId>yasson</artifactId>
+    <version>1.0</version>
+</dependency>
 ```
 
 ### Starten der Programme
 
-Nachdem wir in jeden Project thorntail verwenden
-
+Nachdem wir in jeden Project thorntail verwenden können wir nach den Packaging
 ```java -jar target/<artifact>-thorntail.jar```
+zum starten ausführen.
 
 ### Rest-Endpoints
 
@@ -149,3 +145,9 @@ Nachdem wir in jeden Project thorntail verwenden
 ## Ausarbeitung des Referats
 
 [Presentation](Presentation/Microservices.pdf)
+
+## Quellen
+
+- Am Schluss der Präsentation                                                  
+- [Adam Bien - Jsonb](http://www.adam-bien.com/roller/abien/entry/java_ee_8_serializing_pojos)
+- [How to maintaiin dataconsistency](https://microservices.io/patterns/data/saga.html)
