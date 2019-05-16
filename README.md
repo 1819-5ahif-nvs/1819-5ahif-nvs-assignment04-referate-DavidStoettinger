@@ -2,7 +2,7 @@
 
 ## Beispiel
 
-Es wird ein MicroService simuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können
+Es wird ein MicroService simuliert mit den Entitäten Product und Customer, welche über Order kombiniert abgerufen werden können. Wir verwenden thorntail nachdem dieser für die verwendung von microprofile entwickelt wurde und dementsprechend klein ist.
 
 ### Gleichheiten der Files
 #### pom.xml
@@ -72,7 +72,7 @@ Standard Entity mit einigen Properties.
 #### Facade
 
 Wieso eine ConcurrentMap:
-Nachdem MicroProfile kein JPA unterstützt werden die Daten in einer Map gespeichert.
+Für den erhalt der Datenkonsistenz unter microservices gibt es unterschiedliche Ansätze. Einer wären Sagas (siehe letzte Quelle/Präsentation)
 Der Unterschied zwischen einer normalen und einer ConcurrentMap ist dass ConcurrentMaps die selben Werte bei jeden Zugriff hat.
 
 Für die Id bei der Map verwenden wir eine variable, welche bei jeden verwenden um 1 erhöht wird
@@ -150,4 +150,4 @@ zum starten ausführen.
 
 - Am Schluss der Präsentation                                                  
 - [Adam Bien - Jsonb](http://www.adam-bien.com/roller/abien/entry/java_ee_8_serializing_pojos)
-- [How to maintaiin dataconsistency](https://microservices.io/patterns/data/saga.html)
+- [How to maintain dataconsistency](https://microservices.io/patterns/data/saga.html)
